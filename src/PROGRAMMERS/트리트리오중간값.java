@@ -11,16 +11,21 @@ import java.util.*;
 
 class 트리트리오중간값 {
 
-    static int[][] tree;
+    static ArrayList<Integer>[] nodes;
+    static int N;
 
     public static int solution(int n, int[][] edges) {
-        tree = new int[n + 1][n + 1];
+        N = n;
+        nodes = new ArrayList[N + 1];
 
-        for (int[] edge : edges) {
-            tree[edge[0]][edge[1]] = 1;
-            tree[edge[1]][edge[0]] = 1;
+        for (int i = 1; i < nodes.length; i++) {
+            nodes[i] = new ArrayList<Integer>();
         }
 
+        for (int[] edge : edges) {
+            nodes[edge[0]].add(edge[1]);
+            nodes[edge[1]].add(edge[0]);
+        }
 
         // 임의의 정점 1에서 각 정점(들) X 구하기
         int start = 1;
@@ -80,23 +85,23 @@ class 트리트리오중간값 {
     // 최대 거리의 있는 정점(들) 구하기
     private static int[] bfs(int node) {
         Queue<Integer> queue = new LinkedList<>();
-        boolean[] visited = new boolean[tree.length];
+        boolean[] visited = new boolean[N + 1];
 
         queue.add(node);
         visited[node] = true;
-        int[] dist = new int[tree.length];
+        int[] dist = new int[N + 1];
 
         while (!queue.isEmpty()) {
             int curNode = queue.poll();
 
-            for (int i = 1; i < tree.length; i++) {
+            for (int linkedNode : nodes[curNode]) {
+                if (visited[linkedNode]) continue;
 
-                if (tree[curNode][i] == 0 || visited[i]) continue;
-
-                visited[i] = true;
-                queue.add(i);
-                dist[i] = dist[curNode] + 1;
+                visited[linkedNode] = true;
+                queue.add(linkedNode);
+                dist[linkedNode] = dist[curNode] + 1;
             }
+
         }
         return dist;
     }
