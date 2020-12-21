@@ -1,4 +1,4 @@
-package PROGRAMMERS;
+package _12월3추자;
 
 import java.util.*;
 
@@ -107,23 +107,8 @@ class 트리트리오중간값 {
     }
 
     public static void main(String[] args) {
-        solution(4, new int[][]{{1, 2}, {2, 3}, {3, 4}});
-        solution(5, new int[][]{{1, 2}, {1, 3}, {2, 4}, {3, 5}});
-        solution(5, new int[][]{{1, 5}, {2, 5}, {3, 5}, {4, 5}});
+        System.out.println(solution(4, new int[][]{{1, 2}, {2, 3}, {3, 4}}));
+        System.out.println(solution(5, new int[][]{{1, 2}, {1, 3}, {2, 4}, {3, 5}}));
+        System.out.println(solution(5, new int[][]{{1, 5}, {2, 5}, {3, 5}, {4, 5}}));
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

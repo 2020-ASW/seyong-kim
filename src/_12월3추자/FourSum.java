@@ -1,4 +1,4 @@
-package LEETCODE;
+package _12월3추자;
 
 import java.util.*;
 

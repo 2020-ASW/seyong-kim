@@ -1,4 +1,4 @@
-package LEETCODE;
+package _12월3추자;
 
 public class ContainerWithMostWater {
     public static int maxArea(int[] height) {
