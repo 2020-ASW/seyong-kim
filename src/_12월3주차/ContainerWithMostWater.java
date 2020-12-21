@@ -1,4 +1,4 @@
-package _12월3추자;
+package _12월3주차;
 
 public class ContainerWithMostWater {
     public static int maxArea(int[] height) {

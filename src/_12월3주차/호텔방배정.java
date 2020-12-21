@@ -1,4 +1,4 @@
-package _12월3추자;
+package _12월3주차;
 
 import java.util.HashMap;
 import java.util.Map;
