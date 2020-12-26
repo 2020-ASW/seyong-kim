@@ -4,6 +4,13 @@
 
 ### 2주차
 - [공통 조상](src/_12월4주차/공통조상.java)
+- [가장 큰 정사각형](src/_12월4주차/가장큰정사각형.java)
+- [거스름돈](src/_12월4주차/거스름돈.java)
+- [상원이의 생일 파티](src/_12월4주차/상원이의생일파티.java)
+- [Letter combinations of a phone number](src/_12월4주차/LetterCombinationsOfAPhoneNumber.java)
+- [Palindrome partitioning](src/_12월4주차/PalindromePartitioning.java)
+- [Median of two sorted arrays](src/_12월4주차/MedianOfTwoSortedArrays.java)
+- [Trapping rain water](src/_12월4주차/TrappingRainWater.java)
 
 ### 1주차
 - [햄버거 다이어트](/src/_12월3주차/햄버거다이어트.java)
