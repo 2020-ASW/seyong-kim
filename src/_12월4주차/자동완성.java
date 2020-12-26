@@ -10,7 +10,7 @@ public class 자동완성 {
 
         int answer = 0;
         for (String word : words) {
-            answer += trie.getLeastTyping(word);
+            answer += trie.getMinimumTypingCount(word);
         }
 
         return answer;
@@ -39,10 +39,10 @@ public class 자동완성 {
                 curNode = curNode.children[next];
 
             }
-//            curNode.isTerminal = true;
         }
 
-        public int getLeastTyping(String word) {
+        // get minimum typing counting for finding unique word.
+        public int getMinimumTypingCount(String word) {
             TrieNode curNode = root;
 
             int leastTyping = 0;
@@ -66,12 +66,10 @@ public class 자동완성 {
 
     static class TrieNode {
         TrieNode[] children = new TrieNode[26]; // a~z
-        int count;
-//        boolean isTerminal;
+        int count;  // how many used
 
         TrieNode() {
             count = 1;
-//            isTerminal = false;
         }
     }
 
