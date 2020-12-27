@@ -3,61 +3,52 @@ package _12월4주차;
 import java.util.*;
 
 public class MedianOfTwoSortedArrays {
-    public static double findMedianSortedArrays(int[] A, int[] B) {
-        int m = A.length;
-        int n = B.length;
-        if (m > n) { // to ensure m<=n
-            int[] temp = A;
-            A = B;
-            B = temp;
-            int tmp = m;
-            m = n;
-            n = tmp;
-        }
-        int iMin = 0, iMax = m, halfLen = (m + n + 1) / 2;
-        while (iMin <= iMax) {
-            int i = (iMin + iMax) / 2;
-            int j = halfLen - i;
-            if (i < iMax && B[j - 1] > A[i]) {
-                iMin = i + 1; // i is too small
-            } else if (i > iMin && A[i - 1] > B[j]) {
-                iMax = i - 1; // i is too big
-            } else { // i is perfect
-                int maxLeft = 0;
-                if (i == 0) {
-                    maxLeft = B[j - 1];
-                } else if (j == 0) {
-                    maxLeft = A[i - 1];
-                } else {
-                    maxLeft = Math.max(A[i - 1], B[j - 1]);
-                }
-                if ((m + n) % 2 == 1) {
-                    return maxLeft;
-                }
+    static private final int INFINITY = Integer.MAX_VALUE;
 
-                int minRight = 0;
-                if (i == m) {
-                    minRight = B[j];
-                } else if (j == n) {
-                    minRight = A[i];
-                } else {
-                    minRight = Math.min(B[j], A[i]);
-                }
+    /**
+     * Time complexity : O(log(m+n))
+     * */
+    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int m = nums1.length;
+        int n = nums2.length;
 
-                return (maxLeft + minRight) / 2.0;
+        if (m > n)
+            return findMedianSortedArrays(nums2, nums1);
+
+        double answer = 0.0;
+
+        // always m <= n
+        int start = 0, end = m, halfLen = (m + n + 1) / 2;
+        while (start <= end) {
+            int partitionX = (start + end) / 2;
+            int partitionY = halfLen - partitionX;
+
+            int maxLeftX = (partitionX == 0) ? -INFINITY : nums1[partitionX - 1];
+            int minRightX = (partitionX == m) ? INFINITY : nums1[partitionX];
+
+            int maxLeftY = (partitionY == 0) ? -INFINITY : nums2[partitionY - 1];
+            int minRightY = (partitionY == n) ? INFINITY : nums2[partitionY];
+
+            if (maxLeftX <= minRightY && maxLeftY <= minRightX) {
+                if ((m + n) % 2 != 0) {
+                    answer = Math.max(maxLeftX, maxLeftY);
+                } else {
+                    answer = (double)(Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY)) / 2;
+                }
+                break;
+            } else if (maxLeftX > minRightY) {
+                end = partitionX - 1;
+            } else {
+                start = partitionX + 1;
             }
         }
-        return 0.0;
+        return answer;
     }
 
-    public static void main(String[] args) {
-        int[] A = {2, 4};
-        int[] B = {6, 8, 10, 12, 14};
-        findMedianSortedArrays(A, B);
-    }
-}
-/*
-    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+    /**
+     * Time complexity : O(m+n)
+     * */
+    public double Legacy__FindMedianSortedArrays(int[] nums1, int[] nums2) {
         List<Integer> nums3 = new ArrayList<>();
 
         int i = 0, j = 0;
@@ -81,4 +72,10 @@ public class MedianOfTwoSortedArrays {
             return nums3.get(nums3.size() / 2);
         }
     }
-*/
+
+    public static void main(String[] args) {
+        int[] A = {2, 4};
+        int[] B = {6, 8, 10, 12, 14};
+        findMedianSortedArrays(A, B);
+    }
+}
