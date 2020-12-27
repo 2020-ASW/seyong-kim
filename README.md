@@ -12,6 +12,7 @@
 - 💢[Median of two sorted arrays](src/_12월4주차/MedianOfTwoSortedArrays.java)
 - [Trapping rain water](src/_12월4주차/TrappingRainWater.java)
 - 💢[자동 완성](src/_12월4주차/자동완성.java)
+- [헨리](src/_12월4주차/헨리.java)
 
 ### 1주차
 - [햄버거 다이어트](/src/_12월3주차/햄버거다이어트.java)
@@ -24,5 +25,5 @@
 - [Container with most water](/src/_12월3주차/ContainerWithMostWater.java)
 - 💢 [4Sum](/src/_12월3주차/FourSum.java)
 - 💢 [트리 트리오 중간값](/src/_12월3주차/트리트리오중간값.java)
-- ❌ [오름세](https://www.acmicpc.net/problem/3745)
+- 💢 [오름세](https://www.acmicpc.net/problem/3745) (201227)
 - ❌ [배열에서 이동](https://www.acmicpc.net/problem/1981)
