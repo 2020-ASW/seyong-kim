@@ -15,7 +15,7 @@ public class MedianOfTwoSortedArrays {
         if (m > n)
             return findMedianSortedArrays(nums2, nums1);
 
-        double answer = 0.0;
+        double median = 0.0;
 
         // always m <= n
         int start = 0, end = m, halfLen = (m + n + 1) / 2;
@@ -31,18 +31,18 @@ public class MedianOfTwoSortedArrays {
 
             if (maxLeftX <= minRightY && maxLeftY <= minRightX) {
                 if ((m + n) % 2 != 0) {
-                    answer = Math.max(maxLeftX, maxLeftY);
+                    median = Math.max(maxLeftX, maxLeftY);
                 } else {
-                    answer = (double)(Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY)) / 2;
+                    median = (double)(Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY)) / 2;
                 }
                 break;
             } else if (maxLeftX > minRightY) {
                 end = partitionX - 1;
-            } else {
+            } else {    //maxLeftY > minRightX
                 start = partitionX + 1;
             }
         }
-        return answer;
+        return median;
     }
 
     /**
