@@ -12,13 +12,9 @@ public class TrappingRainWater {
         rightH[height.length - 1] = height[height.length - 1];
 
         int leftIndex = 1, rightIndex = height.length - 2;
-        int maxHeight = 0;
-
         while (leftIndex < height.length) {
             leftH[leftIndex] = Math.max(leftH[leftIndex - 1], height[leftIndex]);
             rightH[rightIndex] = Math.max(rightH[rightIndex + 1], height[rightIndex]);
-
-            maxHeight = Math.max(maxHeight, height[leftIndex]);
 
             leftIndex++;
             rightIndex--;
