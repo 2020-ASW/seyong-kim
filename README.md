@@ -12,6 +12,9 @@
 - 💢[스타 수열](src/_1월1주차/스타수열.java)
 - [N-Queens](src/_1월1주차/NQueens.java)
 - 💢[Maximal Rectangle](src/_1월1주차/MaximalRectangle.java)
+- 💢[Recover binary search tree](src/_1월1주차/RecoverBinarySearchTree.java)
+- ❌[지형 이동](src/_1월1주차/지형이동.java)
+- ❌[Minimum cost to connect two groups of point](https://leetcode.com/problems/minimum-cost-to-connect-two-groups-of-points/)
 
 ### 12월 4주차
 - 💢 [공통 조상](src/_12월4주차/공통조상.java)
