@@ -39,12 +39,23 @@ public class 등산로조성 {
                 }
             }
             answer = 0;
-            for (Road topPosition : top) {
-                visited[topPosition.x][topPosition.y] = true;
-                dfs(topPosition);
-                visited[topPosition.x][topPosition.y] = false;
-            }
 
+            for (int row = 0; row < N; row++) {
+                for (int col = 0; col < N; col++) {
+                    for (int k = 1; k <= K; k++) {
+
+                        map[row][col] -= k;
+
+                        for (Road topPosition : top) {
+                            visited[topPosition.x][topPosition.y] = true;
+                            dfs(topPosition);
+                            visited[topPosition.x][topPosition.y] = false;
+                        }
+
+                        map[row][col] += k;
+                    }
+                }
+            }
             bw.write("#" + testCase + " " + answer + "\n");
         }
         bw.flush();
@@ -68,20 +79,6 @@ public class 등산로조성 {
                 pos.back(nx - dir[0], ny - dir[1]);
                 visited[nx][ny] = false;
 
-            } else if (-1 * diff < K) {     // 깍아서 가보는 경우
-                if (!pos.dig) {
-                    pos.dig = true;
-                    map[nx][ny] -= K;
-                    pos.go(nx, ny);
-                    visited[nx][ny] = true;
-
-                    dfs(pos);
-
-                    pos.back(nx - dir[0], ny - dir[1]);
-                    visited[nx][ny] = false;
-                    pos.dig = false;
-                    map[nx][ny] += K;
-                }
             }
         }
         answer = Math.max(answer, pos.distance);
