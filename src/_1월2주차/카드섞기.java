@@ -39,7 +39,7 @@ public class 카드섞기 {
 
     private static boolean isCircle(int[] origin, int[] P, int N) {
         for (int i = 0; i < N; i++) {
-            if (origin[i] != P[i]){
+            if (origin[i] != P[i]) {
                 return false;
             }
         }

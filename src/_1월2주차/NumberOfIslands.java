@@ -21,7 +21,7 @@ public class NumberOfIslands {
                 }
             }
         }
-        return sector-1;
+        return sector - 1;
     }
 
     private static void bfs(char[][] grid, int x, int y, int sector) {

@@ -49,8 +49,7 @@ public class 경주로건설 {
                 if (board[nx][ny] == 0) {
                     board[nx][ny] = newCost;
                     queue.add(new Car(nx, ny, newCost, d));
-                }
-                else if(board[nx][ny] >= newCost){
+                } else if (board[nx][ny] >= newCost) {
                     board[nx][ny] = Math.min(board[nx][ny], newCost);
                     queue.add(new Car(nx, ny, newCost, d));
                 }
