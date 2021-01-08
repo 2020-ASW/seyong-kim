@@ -6,6 +6,11 @@
 - [카드 섞기](src/_1월2주차/카드섞기.java) 
 - [등굣길](src/_1월2주차/등굣길.java)
 - [등산로 조성](src/_1월2주차/등산로조성.java)
+- [네개의 소수](src/_1월2주차/네개의소수.java)
+- [Number of islands](src/_1월2주차/NumberOfIslands.java)
+- [경주로 건설](src/_1월2주차/경주로건설.java)
+- [Range Sum Query](src/_1월2주차/RangeSumQuery.java)
+- [최고의 집합](src/_1월2주차/최고의집합.java)
 
 ### 1월 1주차
 - [치킨 배달](src/_1월1주차/치킨배달.java)
