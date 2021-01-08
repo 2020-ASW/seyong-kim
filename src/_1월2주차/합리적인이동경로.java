@@ -8,9 +8,10 @@ import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
-public class 합리적인이동경로 {
+class 합리적인이동경로 {
     static ArrayList<Node>[] graph;
     static int[] minCost;
+    static final int S = 1, T = 2;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -23,19 +24,19 @@ public class 합리적인이동경로 {
 
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
-            int a = Integer.parseInt(st.nextToken());   // src
-            int b = Integer.parseInt(st.nextToken());   // dst
-            int dist = Integer.parseInt(st.nextToken());   // distance
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
+            int dist = Integer.parseInt(st.nextToken());
 
             graph[a].add(new Node(b, dist));
             graph[b].add(new Node(a, dist));
         }
 
-        dijkstra(2);
+        dijkstra(T);
         cnt = new int[N + 1];
         Arrays.fill(cnt, -1);
 
-        int answer = countPath(new Node(1, 0));
+        int answer = countPath(new Node(S, 0));
 
         System.out.println(answer);
     }
@@ -44,8 +45,7 @@ public class 합리적인이동경로 {
     static int[] cnt;
 
     private static int countPath(Node now) {
-        // now 에서 2로 이동하는것은 항상 합리적인 경로
-        if (now.idx == 2) return 1;
+        if (now.idx == T) return 1;
 
         // memoization
         if (cnt[now.idx] != -1) return cnt[now.idx];
@@ -65,7 +65,10 @@ public class 합리적인이동경로 {
 
     private static void init(int n) {
         graph = new ArrayList[n + 1];
-        Arrays.fill(graph, new ArrayList<>());
+        // Arrays.fill(graph, new ArrayList<>());
+        // 이렇게 쓰면 안됨 모든 배열에 같은 ArrayList 주소값이 들어감(because Call by reference)
+        for (int i = 0; i < graph.length; i++) graph[i] = new ArrayList<>();
+
         minCost = new int[n + 1];
         Arrays.fill(minCost, Integer.MAX_VALUE);
     }
