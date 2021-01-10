@@ -11,6 +11,7 @@
 - [경주로 건설](src/_1월2주차/경주로건설.java)
 - [Range Sum Query](src/_1월2주차/RangeSumQuery.java)
 - [최고의 집합](src/_1월2주차/최고의집합.java)
+- [합리적인 이동경로](src/_1월2주차/합리적인이동경로.java)
 
 ### 1월 1주차
 - [치킨 배달](src/_1월1주차/치킨배달.java)
