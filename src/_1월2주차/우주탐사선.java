@@ -9,7 +9,7 @@ public class 우주탐사선 {
     static int N;
     static int ans = Integer.MAX_VALUE;
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
@@ -17,16 +17,16 @@ public class 우주탐사선 {
         int start = Integer.parseInt(st.nextToken());
         map = new int[N][N];
 
-        for(int i=0; i<N; i++) {
+        for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
-            for(int j=0; j<N; j++)
+            for (int j = 0; j < N; j++)
                 map[i][j] = Integer.parseInt(st.nextToken());
         }
 
-        for(int k=0; k<N; k++) {
-            for(int i=0; i<N; i++) {
-                for(int j=0; j<N; j++) {
-                    map[i][j] = Math.min(map[i][j], map[i][k]+map[k][j]);     //플로이드 와샬 알고리즘으로 최소 거리 구함
+        for (int k = 0; k < N; k++) {
+            for (int i = 0; i < N; i++) {
+                for (int j = 0; j < N; j++) {
+                    map[i][j] = Math.min(map[i][j], map[i][k] + map[k][j]);     //플로이드 와샬 알고리즘으로 최소 거리 구함
                 }
             }
         }
@@ -39,15 +39,15 @@ public class 우주탐사선 {
     }
 
     public static void dfs(boolean[] visited, int temp, int sum, int depth) {
-        if(depth==N-1) {
+        if (depth == N - 1) {
             ans = Math.min(ans, sum);     //최단 거리 구하기
-            return ;
+            return;
         }
 
-        for(int i=0; i<N; i++) {
-            if(!visited[i]) {
+        for (int i = 0; i < N; i++) {
+            if (!visited[i]) {
                 visited[i] = true;
-                dfs(visited, i, sum+map[temp][i], depth+1);   //안지나간 정거장 지나가기
+                dfs(visited, i, sum + map[temp][i], depth + 1);   //안지나간 정거장 지나가기
                 visited[i] = false;
             }
         }
