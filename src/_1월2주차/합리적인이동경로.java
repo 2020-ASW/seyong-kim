@@ -12,6 +12,7 @@ class 합리적인이동경로 {
     static ArrayList<Node>[] graph;
     static int[] minCost;
     static final int S = 1, T = 2;
+    static int[] cnt;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -33,44 +34,23 @@ class 합리적인이동경로 {
         }
 
         dijkstra(T);
-        cnt = new int[N + 1];
-        Arrays.fill(cnt, -1);
 
         int answer = countPath(new Node(S, 0));
 
         System.out.println(answer);
     }
 
-
-    static int[] cnt;
-
-    private static int countPath(Node now) {
-        if (now.idx == T) return 1;
-
-        // memoization
-        if (cnt[now.idx] != -1) return cnt[now.idx];
-
-        cnt[now.idx] = 0;
-
-        for (Node next : graph[now.idx]) {
-            // now 와 연결된 노드들 중에서
-            // (now ~ T 까지의 최단 거리) > (next ~ T 까지의 최단 거리) = 합리적인 경로
-            if (minCost[now.idx] > minCost[next.idx]) {
-                cnt[now.idx] += countPath(next);
-            }
-        }
-
-        return cnt[now.idx];
-    }
-
     private static void init(int n) {
+        // init for dijkstra
         graph = new ArrayList[n + 1];
-        // Arrays.fill(graph, new ArrayList<>());
-        // 이렇게 쓰면 안됨 모든 배열에 같은 ArrayList 주소값이 들어감(because Call by reference)
         for (int i = 0; i < graph.length; i++) graph[i] = new ArrayList<>();
 
         minCost = new int[n + 1];
         Arrays.fill(minCost, Integer.MAX_VALUE);
+
+        // init for countPath
+        cnt = new int[n + 1];
+        Arrays.fill(cnt, -1);
     }
 
     private static void dijkstra(int src) {
@@ -90,6 +70,26 @@ class 합리적인이동경로 {
                 }
             }
         }
+    }
+
+    private static int countPath(Node now) {
+        // T에 도착 했다면
+        if (now.idx == T) return 1;
+
+        // 경로를 카운트한 적 있으면
+        if (cnt[now.idx] != -1) return cnt[now.idx];
+
+        cnt[now.idx] = 0;
+
+        for (Node next : graph[now.idx]) {
+            // now 와 연결된 노드들 중에서
+            // (now ~ T 까지의 최단 거리) > (next ~ T 까지의 최단 거리) = 합리적인 경로
+            if (minCost[now.idx] > minCost[next.idx]) {
+                cnt[now.idx] += countPath(next);
+            }
+        }
+
+        return cnt[now.idx];
     }
 
     static class Node implements Comparable<Node> {
