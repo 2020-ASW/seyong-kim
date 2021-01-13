@@ -18,7 +18,7 @@ public class 오름새 {
             List<Integer> list = new ArrayList<>();
 
             for (int stock : stocks) {
-                if (list.size() == 0 || list.get(list.size() - 1) <= stock) {
+                if (list.size() == 0 || list.get(list.size() - 1) < stock) {
                     list.add(stock);
                     continue;
                 }
