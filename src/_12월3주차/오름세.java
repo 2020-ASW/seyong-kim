@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class 오름새 {
+public class 오름세 {
     public static void main(String[] args) throws IOException {
         StringBuilder sb = new StringBuilder();
         Scanner sc = new Scanner(System.in);
