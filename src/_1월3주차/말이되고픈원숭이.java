@@ -8,7 +8,7 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class 말이되고픈원숭이 {
-    static int K, W, H, answer;
+    static int K, W, H;
     static int[][] map;
     static boolean[][][] visited;
     static int[][] dir = {{-1, 0}, {1, 0}, {0, -1}, {0, 1},
@@ -33,10 +33,7 @@ public class 말이되고픈원숭이 {
                 map[i][j] = Integer.parseInt(st.nextToken());
             }
         }
-        answer = Integer.MAX_VALUE;
         bfs(new Monkey(0, 0, 0, 0));
-
-        System.out.println(answer == Integer.MAX_VALUE ? -1 : answer);
     }
 
     private static void bfs(Monkey start) {
@@ -48,7 +45,8 @@ public class 말이되고픈원숭이 {
             Monkey now = queue.poll();
 
             if (now.x == H - 1 && now.y == W - 1) {
-                answer = Math.min(answer, now.action);
+                System.out.println(now.action);
+                return;
             }
 
             int len = now.jump < K ? 12 : 4;
@@ -67,6 +65,7 @@ public class 말이되고픈원숭이 {
                 queue.add(new Monkey(nx, ny, nAct, nJump));
             }
         }
+        System.out.println(-1);
     }
 
     static class Monkey {
