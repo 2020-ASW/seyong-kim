@@ -24,28 +24,19 @@ public class 말이되고픈원숭이 {
         W = Integer.parseInt(st.nextToken());
         H = Integer.parseInt(st.nextToken());
 
-        map = new int[W][H];
-        visited = new boolean[W][H][K + 1];
+        map = new int[H][W];
+        visited = new boolean[H][W][K + 1];
 
-        for (int i = 0; i < W; i++) {
+        for (int i = 0; i < H; i++) {
             st = new StringTokenizer(br.readLine());
-            for (int j = 0; j < H; j++) {
+            for (int j = 0; j < W; j++) {
                 map[i][j] = Integer.parseInt(st.nextToken());
             }
         }
         answer = Integer.MAX_VALUE;
         bfs(new Monkey(0, 0, 0, 0));
 
-        boolean arrived = false;
-        for (int k = 0; k <= K; k++) {
-            if (visited[W - 1][H - 1][k]) {
-                arrived = true;
-                break;
-            }
-            arrived = visited[W - 1][H - 1][k];
-        }
-
-        System.out.println(arrived ? answer : -1);
+        System.out.println(answer == Integer.MAX_VALUE ? -1 : answer);
     }
 
     private static void bfs(Monkey start) {
@@ -56,7 +47,7 @@ public class 말이되고픈원숭이 {
         while (!queue.isEmpty()) {
             Monkey now = queue.poll();
 
-            if (now.x == W - 1 && now.y == H - 1) {
+            if (now.x == H - 1 && now.y == W - 1) {
                 answer = Math.min(answer, now.action);
             }
 
@@ -67,7 +58,7 @@ public class 말이되고픈원숭이 {
                 int nJump = i < 4 ? now.jump : now.jump + 1;
                 int nAct = now.action + 1;
 
-                if (nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
+                if (nx < 0 || ny < 0 || nx >= H || ny >= W) continue;
                 if (map[nx][ny] == 1) continue;
                 if (visited[nx][ny][nJump]) continue;
 
