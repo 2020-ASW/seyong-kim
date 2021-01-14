@@ -6,6 +6,7 @@ import java.util.StringTokenizer;
 
 public class 우주탐사선 {
     static int[][] map;
+    static boolean[] visited;
     static int N;
     static int ans = Integer.MAX_VALUE;
 
@@ -32,25 +33,24 @@ public class 우주탐사선 {
             }
         }
 
-        boolean[] visited = new boolean[N];
+        visited = new boolean[N];
         visited[start] = true;
-        dfs(visited, start, 0, 0);
+        dfs(start, 0, 0);
 
         System.out.println(ans);
     }
 
-    public static void dfs(boolean[] visited, int now, int sum, int depth) {
+    public static void dfs(int now, int sum, int depth) {
         if (depth == N - 1) {
             ans = Math.min(ans, sum);
             return;
         }
 
         for (int i = 0; i < N; i++) {
-
             if (visited[i]) continue;
 
             visited[i] = true;
-            dfs(visited, i, sum + map[now][i], depth + 1);
+            dfs(i, sum + map[now][i], depth + 1);
             visited[i] = false;
 
         }
