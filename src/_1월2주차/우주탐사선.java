@@ -23,10 +23,11 @@ public class 우주탐사선 {
                 map[i][j] = Integer.parseInt(st.nextToken());
         }
 
-        for (int k = 0; k < N; k++) {
-            for (int i = 0; i < N; i++) {
-                for (int j = 0; j < N; j++) {
-                    map[i][j] = Math.min(map[i][j], map[i][k] + map[k][j]);     //플로이드 와샬 알고리즘으로 최소 거리 구함
+        // 플로이드와샬
+        for (int k = 0; k < N; k++) {                   // 경우 정점
+            for (int i = 0; i < N; i++) {               // 시작 정점
+                for (int j = 0; j < N; j++) {           // 도착 정점
+                    map[i][j] = Math.min(map[i][j], map[i][k] + map[k][j]);
                 }
             }
         }
@@ -38,18 +39,20 @@ public class 우주탐사선 {
         System.out.println(ans);
     }
 
-    public static void dfs(boolean[] visited, int temp, int sum, int depth) {
+    public static void dfs(boolean[] visited, int now, int sum, int depth) {
         if (depth == N - 1) {
-            ans = Math.min(ans, sum);     //최단 거리 구하기
+            ans = Math.min(ans, sum);
             return;
         }
 
         for (int i = 0; i < N; i++) {
-            if (!visited[i]) {
-                visited[i] = true;
-                dfs(visited, i, sum + map[temp][i], depth + 1);   //안지나간 정거장 지나가기
-                visited[i] = false;
-            }
+
+            if (visited[i]) continue;
+
+            visited[i] = true;
+            dfs(visited, i, sum + map[now][i], depth + 1);
+            visited[i] = false;
+
         }
     }
 }
