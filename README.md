@@ -6,6 +6,7 @@
 - [Recover Binary Search Tree](src/_1월3주차/RecoverBinarySearchTree.java)
 - [오름세](src/_1월3주차/오름세.java)
 - [말이 되고픈 원숭이](src/_1월3주차/말이되고픈원숭이.java)
+- [자동 완성](src/_1월3주차/자동완성.java)
 
 ### 1월 2주차
 - [카드 섞기](src/_1월2주차/카드섞기.java) 
