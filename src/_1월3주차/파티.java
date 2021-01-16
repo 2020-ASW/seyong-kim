@@ -8,6 +8,14 @@ import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
+/**
+ * (1) Fail (틀렸습니다)
+ * - X 기준 dijkstra 를 한 뒤 가장먼 학생과 거리를 구한다
+ * - 학생 기준 dijkstra 를 한 뒤 X 까지의 거리를 더한다
+ * (2) Success
+ * - X 기준 dijkstra 를 한 뒤 가장먼 학생과 거리를 구한다
+ */
+
 public class 파티 {
     static int N, M, X;
     static final int INF = Integer.MAX_VALUE;
@@ -21,7 +29,12 @@ public class 파티 {
         X = Integer.parseInt(st.nextToken());
 
         ArrayList<Node>[] map = new ArrayList[N + 1];
-        for (int i = 0; i < map.length; i++) map[i] = new ArrayList<>();
+        ArrayList<Node>[] reverseMap = new ArrayList[N + 1];
+
+        for (int i = 0; i < map.length; i++) {
+            map[i] = new ArrayList<>();
+            reverseMap[i] = new ArrayList<>();
+        }
 
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
@@ -30,20 +43,23 @@ public class 파티 {
             int t = Integer.parseInt(st.nextToken());
 
             map[u].add(new Node(v, t));
+            reverseMap[v].add(new Node(u, t));
         }
 
-        int[] time = dijkstra(map, X);
+        // 파티 장소에서부터 각 정점까지의 최단 거리
+        int[] partyPath = dijkstra(map, X);
 
-        int answer = 0, student = 0;
-        for (int i = 1; i < time.length; i++) {
-            if (time[i] != INF && answer < time[i]) {
-                answer = time[i];
-                student = i;
-            }
+        // 각 정점에서 파티 장소로 향하는 최단 거리
+        int[] homePath = dijkstra(reverseMap, X);
+
+        // System.out.println(Arrays.toString(partyPath));
+        // System.out.println(Arrays.toString(homePath));
+
+        int answer = 0;
+        for (int i = 1; i <= N; i++) {
+            answer = Math.max(answer, partyPath[i] + homePath[i]);
         }
 
-        time = dijkstra(map, student);
-        answer += time[X];
 
         System.out.println(answer);
     }
