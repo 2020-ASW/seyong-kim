@@ -40,13 +40,18 @@ class 지형이동 {
                 }
             }
         }
+        // Sorting (1.now.diff ASC  2.node.now ASC)
         Collections.sort(list);
-        System.out.println(list.toString());
-        int answer = 0, cnt = 0;
 
+        int answer = 0, cnt = 0;
+        // for union-find
         parent = new int[sector];
+
         for (int i = 1; i < parent.length; i++) parent[i] = i;
+
+        // The point is that the list is sorted
         for (Node node : list) {
+            // So this part is unique
             if (find(node.now) != find(node.next)) {
                 union(node.now, node.next);
                 answer += node.diff;
