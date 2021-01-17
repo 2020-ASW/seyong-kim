@@ -10,6 +10,8 @@
 - [징검다리](src/_1월3주차/징검다리.java)
 - [지형이동](src/_1월3주차/지형이동.java)
 - [파티](src/_1월3주차/파티.java)
+- [Maximal Rectangle](src/_1월3주차/MaximalRectangle.java)
+- [공통 조상](src/_1월3주차/공통조상.java)
 
 ### 1월 2주차
 - [카드 섞기](src/_1월2주차/카드섞기.java) 
@@ -38,15 +40,15 @@
 - ❌ [Minimum cost to connect two groups of point](https://leetcode.com/problems/minimum-cost-to-connect-two-groups-of-points/)
 
 ### 12월 4주차
-- 💢 [공통 조상](src/_12월4주차/공통조상.java)
-- 💢 [가장 큰 정사각형](src/_12월4주차/가장큰정사각형.java)
+- [공통 조상](src/_12월4주차/공통조상.java)
+- [가장 큰 정사각형](src/_12월4주차/가장큰정사각형.java)
 - 💢 [거스름돈](src/_12월4주차/거스름돈.java)
 - [상원이의 생일 파티](src/_12월4주차/상원이의생일파티.java)
 - [Letter combinations of a phone number](src/_12월4주차/LetterCombinationsOfAPhoneNumber.java)
 - 💢 [Palindrome partitioning](src/_12월4주차/PalindromePartitioning.java)
 - 💢 [Median of two sorted arrays](src/_12월4주차/MedianOfTwoSortedArrays.java)
 - [Trapping rain water](src/_12월4주차/TrappingRainWater.java)
-- 💢 [자동 완성](src/_12월4주차/자동완성.java)
+- [자동 완성](src/_12월4주차/자동완성.java)
 - [헨리](src/_12월4주차/헨리.java)
 - 💢 [이미지 유사도 검사](src/_12월4주차/이미지유사도검사.java)
 - ❌ [징검다리](https://programmers.co.kr/learn/courses/30/lessons/43236)
@@ -62,5 +64,5 @@
 - [Container with most water](/src/_12월3주차/ContainerWithMostWater.java)
 - 💢 [4Sum](/src/_12월3주차/FourSum.java)
 - 💢 [트리 트리오 중간값](/src/_12월3주차/트리트리오중간값.java)
-- 💢 [오름세](https://www.acmicpc.net/problem/3745)
+- [오름세](https://www.acmicpc.net/problem/3745)
 - ❌ [배열에서 이동](https://www.acmicpc.net/problem/1981)
