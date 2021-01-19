@@ -2,6 +2,12 @@
 > 💢 : 다시 풀어볼 문제 <br>
 > ❌ : 못 푼 문제
 
+### 1월 4주차
+- [ACM Craft](src/_1월4주차/ACMCraft.java)
+- [중량 제한](src/_1월4주차/중량제한.java)
+- [낚시왕](src/_1월4주차/낚시왕.java)
+- [섬 연결하기](src/_1월4주차/섬연결하기.java)
+
 ### 1월 3주차
 - [Recover Binary Search Tree](src/_1월3주차/RecoverBinarySearchTree.java)
 - [오름세](src/_1월3주차/오름세.java)
@@ -12,6 +18,9 @@
 - [파티](src/_1월3주차/파티.java)
 - [Maximal Rectangle](src/_1월3주차/MaximalRectangle.java)
 - [공통 조상](src/_1월3주차/공통조상.java)
+- ❌ [배열에서 이동](https://www.acmicpc.net/problem/1981)
+- ❌ [동굴 탐험](https://programmers.co.kr/learn/courses/30/lessons/67260)
+- ❌ [우수 마을](https://www.acmicpc.net/problem/1949)
 
 ### 1월 2주차
 - [카드 섞기](src/_1월2주차/카드섞기.java) 
@@ -24,6 +33,8 @@
 - [최고의 집합](src/_1월2주차/최고의집합.java)
 - 💢 [합리적인 이동경로](src/_1월2주차/합리적인이동경로.java)
 - 💢 [우주 탐사선](src/_1월2주차/우주탐사선.java)
+- ❌ [01 Matrix](https://leetcode.com/problems/01-matrix/)
+- ❌ [선표의 축구 경기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWFUsJvqAegDFAVB&categoryId=AWFUsJvqAegDFAVB&categoryType=CODE)
 
 ### 1월 1주차
 - [치킨 배달](src/_1월1주차/치킨배달.java)
