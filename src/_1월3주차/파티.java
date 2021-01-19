@@ -8,14 +8,6 @@ import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
-/**
- * (1) Fail (틀렸습니다)
- * - X 기준 dijkstra 를 한 뒤 가장먼 학생과 거리를 구한다
- * - 학생 기준 dijkstra 를 한 뒤 X 까지의 거리를 더한다
- * (2) Success
- * - X 기준 dijkstra 를 한 뒤 가장먼 학생과 거리를 구한다
- */
-
 public class 파티 {
     static int N, M, X;
     static final int INF = Integer.MAX_VALUE;
