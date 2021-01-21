@@ -59,9 +59,8 @@ public class ACMCraft {
 
                 if (indegree[next] == 0)
                     queue.offer(new int[]{now, next});
-                else{
+                else
                     spendTime[next] = Math.max(spendTime[next], spendTime[now] + time[next]);
-                }
             }
         }
         return spendTime[W];
