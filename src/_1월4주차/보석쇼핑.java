@@ -9,30 +9,31 @@ public class 보석쇼핑 {
         int totalGem = set.size();
 
         Map<String, Integer> map = new HashMap<>();
-        List<String> list = new ArrayList<>();
+        Queue<String> queue = new LinkedList<>();
 
-        int start = 0, end = 0;
+        int start = 0;
         int resStart = 0, length = Integer.MAX_VALUE;
         for (int i = 0; i < gems.length; i++) {
             if (!map.containsKey(gems[i])) {
-                map.put(gems[i], i);
+                map.put(gems[i], 1);
             } else {
-                list.add(gems[i]);
+                map.put(gems[i], map.get(gems[i]) + 1);
             }
 
-            end++;
+            queue.add(gems[i]);
 
-            while (!list.isEmpty()) {
-                if (list.contains(gems[start])) {
-                    list.remove(gems[start]);
+            while (!queue.isEmpty()) {
+                if (map.get(queue.peek()) >= 2) {
+                    String dupGem = queue.poll();
+                    map.put(dupGem, map.get(dupGem) - 1);
                     start++;
                 } else {
                     break;
                 }
             }
 
-            if (totalGem == map.size() && length > (end - start)) {
-                length = end - start;
+            if (totalGem == map.size() && length > queue.size()) {
+                length = queue.size();
                 resStart = start;
             }
         }
