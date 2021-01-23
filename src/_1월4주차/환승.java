@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
+/** 시간 줄일 방법 필요..*/
+
 public class 환승 {
     static int N, K, M, answer;
     static boolean[] stnVisited;
