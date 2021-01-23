@@ -7,6 +7,8 @@ import java.util.*;
 
 public class 환승 {
     static int N, K, M, answer;
+    static boolean[] stnVisited;
+    static boolean[] hypVisited;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -33,13 +35,15 @@ public class 환승 {
         }
 
         answer = Integer.MAX_VALUE;
+        stnVisited = new boolean[N + 1];
+        hypVisited = new boolean[M + 1];
+        bfs(stationGraph, hyperTubeGraph);
 
-        bfs(stationGraph, hyperTubeGraph, new boolean[N + 1], new boolean[M + 1]);
-
-        System.out.println(answer+1);
+        if (stnVisited[N]) System.out.println(answer + 1);
+        else System.out.println(-1);
     }
 
-    private static void bfs(ArrayList<Node>[] stationGraph, ArrayList<Node>[] hyperTubeGraph, boolean[] stnVisited, boolean[] hypVisited) {
+    private static void bfs(ArrayList<Node>[] stationGraph, ArrayList<Node>[] hyperTubeGraph) {
         Queue<Station> queue = new LinkedList<>();
         queue.add(new Station(1, 0));
         stnVisited[1] = true;
