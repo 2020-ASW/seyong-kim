@@ -4,8 +4,8 @@ import java.util.*;
 
 public class MaximumFrequencyStack {
 
-    static Map<Integer, Integer> feqMap;
-    static Map<Integer, Stack<Integer>> stackMap;
+    Map<Integer, Integer> feqMap;
+    Map<Integer, Stack<Integer>> stackMap;
     int maxFreq;
 
     public MaximumFrequencyStack() {
@@ -13,7 +13,6 @@ public class MaximumFrequencyStack {
         feqMap = new HashMap<>();
         stackMap = new HashMap<>();
     }
-
 
     public void push(int x) {
         if (!feqMap.containsKey(x)) {
