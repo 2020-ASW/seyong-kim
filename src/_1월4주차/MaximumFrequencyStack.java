@@ -57,5 +57,7 @@ public class MaximumFrequencyStack {
         System.out.print(M.pop()+" ");
         System.out.print(M.pop()+" ");
         System.out.print(M.pop()+" ");
+
+        // Output >> 5 5 1 5 1 5 6 2 1 5
     }
 }
