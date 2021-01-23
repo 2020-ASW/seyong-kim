@@ -7,6 +7,9 @@
 - [중량 제한](src/_1월4주차/중량제한.java)
 - [낚시왕](src/_1월4주차/낚시왕.java)
 - [섬 연결하기](src/_1월4주차/섬연결하기.java)
+- [보석 쇼핑](src/_1월4주차/보석쇼핑.java)
+- [Binary Tree Maximum Path Sum](src/_1월4주차/BinaryTreeMaximumPathSum.java)
+- [Maximum Frequency Stack](src/_1월4주차/MaximumFrequencyStack.java)
 
 ### 1월 3주차
 - [Recover Binary Search Tree](src/_1월3주차/RecoverBinarySearchTree.java)
