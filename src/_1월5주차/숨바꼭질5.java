@@ -3,25 +3,24 @@ package _1월5주차;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class 숨바꼭질5 {
-    static int old, young;
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] input = br.readLine().split(" ");
 
-        old = Integer.parseInt(input[0]);
-        young = Integer.parseInt(input[1]);
+        int old = Integer.parseInt(input[0]);
+        int young = Integer.parseInt(input[1]);
 
         if (old == young) {
             System.out.println(0);
             return;
         }
 
-        int[] youngPos = new int[1000];
+        int[] youngPos = new int[1001];
         youngPos[0] = young;
         for (int t = 1; t < youngPos.length; t++) youngPos[t] = youngPos[t - 1] + t;
 
@@ -32,19 +31,28 @@ public class 숨바꼭질5 {
         Queue<Subin> queue = new LinkedList<>();
         queue.add(new Subin(subinPosition, 0));
 
+        int[][] visited = new int[2][500001];
+        Arrays.fill(visited[0], -1);
+        Arrays.fill(visited[1], -1);
+
+        String[] operations = new String[]{"+", "-", "*"};
         while (!queue.isEmpty()) {
-            Subin now = queue.poll();
+            Subin subin = queue.poll();
 
-            for (String op : new String[]{"+", "-", "*"}) {
-                int np = operate(op, now.location);
+            if (youngPos[subin.time] > 500000) break;
 
-                if (np > 500000 || np < 0) continue;
+            if (visited[(subin.time) % 2][youngPos[subin.time]] != -1) return subin.time;
 
-                if (youngPos[now.time + 1] == np) {
-                    return now.time + 1;
+            for (String op : operations) {
+                int nPos = operate(op, subin.location);
+                int nTime = (subin.time + 1) % 2;
+
+                if (nPos > 500000 || nPos < 0) continue;
+
+                if (visited[nTime][nPos] == -1) {
+                    visited[nTime][nPos] = subin.time + 1;
+                    queue.add(new Subin(nPos, subin.time + 1));
                 }
-
-                queue.add(new Subin(np, now.time + 1));
             }
         }
         return -1;
