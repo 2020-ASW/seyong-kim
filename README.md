@@ -13,6 +13,8 @@
 - [Couples Holding Hands](src/_1월4주차/CouplesHoldingHands.java )
 - [환승](src/_1월4주차/환승.java)
 - [풍선 터트리기](src/_1월4주차/풍선터트리기.java)
+- ❌ [무지의 먹방 라이브](https://programmers.co.kr/learn/courses/30/lessons/42891)
+- ❌ [4단 고음](https://programmers.co.kr/learn/courses/30/lessons/1831)
 
 ### 1월 3주차
 - [Recover Binary Search Tree](src/_1월3주차/RecoverBinarySearchTree.java)
