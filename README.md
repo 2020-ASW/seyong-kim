@@ -2,6 +2,13 @@
 > 💢 : 다시 풀어볼 문제 <br>
 > ❌ : 못 푼 문제
 
+### 1월 5주차
+- [TargetSum](src/_1월5주차/TargetSum.java)
+- [트리의 지름](src/_1월5주차/트리의지름.java)
+- [숨바꼭질5](src/_1월5주차/숨바꼭질5.java)
+- [괄호 추가하기](src/_1월5주차/괄호추가하기.java)
+
+
 ### 1월 4주차
 - [ACM Craft](src/_1월4주차/ACMCraft.java)
 - [중량 제한](src/_1월4주차/중량제한.java)
