@@ -80,26 +80,3 @@ public class 외벽점검 {
         System.out.println(solution(12, new int[]{0, 6}, new int[]{1, 1}));
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
