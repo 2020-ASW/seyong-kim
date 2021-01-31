@@ -32,8 +32,7 @@ public class 외벽점검 {
 
     private static void permutation(int[] dist, int max, ArrayList<Integer> friends) {
         if (friends.size() == max) {
-            int val = checkWall(friends);
-            answer = Math.min(answer, val);
+            checkWall(friends);
             return;
         }
 
@@ -48,8 +47,7 @@ public class 외벽점검 {
         }
     }
 
-    private static int checkWall(ArrayList<Integer> friends) {
-        int count = 0;
+    private static void checkWall(ArrayList<Integer> friends) {
         for (int start = 0; start < map.length; start++) {
             boolean flag = true;
             int idx = 0;
@@ -58,29 +56,28 @@ public class 외벽점검 {
                 int cur = map[i % map.length];
 
                 sum += cur;
+
+                if (idx >= friends.size()) {
+                    flag = false;
+                    break;
+                }
+
                 if (friends.get(idx) < sum) {
                     idx++;
                     sum = 0;
-                    count++;
-                    if (idx >= friends.size()) {
-                        flag = false;
-                        break;
-                    }
                 }
             }
             if (flag) {
-                return count;
+                answer = Math.min(answer, friends.size());
+                break;
             }
         }
-        return count;
     }
 
     public static void main(String[] args) {
         System.out.println(solution(12, new int[]{1, 5, 6, 10}, new int[]{1, 2, 3, 4}));
         System.out.println(solution(12, new int[]{1, 3, 4, 9, 10}, new int[]{3, 5, 7}));
-        System.out.println(solution(12, new int[]{0, 10}, new int[]{1, 2}));
-        System.out.println(solution(200, new int[]{0, 100}, new int[]{1, 1}));
-        System.out.println(solution(200, new int[]{0, 10, 50, 80, 120, 160}, new int[]{1, 10, 5, 40, 30}));
+        System.out.println(solution(12, new int[]{0, 6}, new int[]{1, 1}));
     }
 }
 
