@@ -5,6 +5,8 @@
 ### 2월 1주차
 - [셀로판지](src/_2월1주차/셀로판지.java)
 - [특정한 최단 경로](src/_2월1주차/특정한최단경로.java)
+- [K진트리](src/_2월1주차/K진트리.java)
+- [Longest Increasing Subsequence](src/_2월1주차/LIS.java)
 
 ### 1월 5주차
 - [TargetSum](src/_1월5주차/TargetSum.java)
