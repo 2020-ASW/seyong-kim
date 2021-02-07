@@ -5,9 +5,12 @@ import java.util.PriorityQueue;
 
 public class MergeKSortedLists {
     public static ListNode mergeKLists(ListNode[] lists) {
+        if (lists == null || lists.length == 0) return null;
+
         PriorityQueue<Integer> pq = new PriorityQueue<>();
         for (ListNode node : lists) {
             if (node == null) continue;
+
             pq.add(node.val);
 
             ListNode next = node.next;
@@ -16,6 +19,7 @@ public class MergeKSortedLists {
                 next = next.next;
             }
         }
+
         ListNode head = new ListNode();
         ListNode cur = head;
 
@@ -24,6 +28,9 @@ public class MergeKSortedLists {
             cur.next = (pq.peek() != null ? new ListNode(pq.peek()) : null);
             cur = cur.next;
         }
+
+        if (head.next == null && head.val == 0) return null;
+
         return head;
     }
 
