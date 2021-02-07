@@ -4,6 +4,27 @@ package _2월1주차;
 import java.util.PriorityQueue;
 
 public class MergeKSortedLists {
+
+    public static ListNode MergeKLists_코드개선(ListNode[] lists) {
+        if (lists == null || lists.length == 0) return null;
+
+        PriorityQueue<ListNode> pq = new PriorityQueue<>();
+
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+
+        for (ListNode node : lists)
+            if (node != null) pq.add(node);
+
+        while (!pq.isEmpty()) {
+            tail.next = pq.poll();
+            tail = tail.next;
+
+            if (tail.next != null) pq.add(tail.next);
+        }
+        return dummy.next;
+    }
+
     public static ListNode mergeKLists(ListNode[] lists) {
         if (lists == null || lists.length == 0) return null;
 
