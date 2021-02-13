@@ -30,11 +30,11 @@ public class 창용마을무리의개수 {
 
                 union(u, v);
             }
-            System.out.println(Arrays.toString(parent));
-            Set<Integer> count = new HashSet<>();
-            for (int i = 1; i < parent.length; i++) count.add(parent[i]);
+            int cnt = 0;
+            for (int i = 1; i < parent.length; i++)
+                if(i == parent[i]) cnt++;
 
-            sb.append("#").append(testCase).append(" ").append(count.size()).append("\n");
+            sb.append("#").append(testCase).append(" ").append(cnt).append("\n");
         }
         System.out.println(sb.toString());
     }
@@ -46,8 +46,6 @@ public class 창용마을무리의개수 {
         if (x == y) return;
 
         parent[y] = x;
-        parent[x] = x;
-
     }
 
     private static int find(int x) {
@@ -58,8 +56,3 @@ public class 창용마을무리의개수 {
         }
     }
 }
-
-/*
-1 2 3 4 5 6
-1 1 1 1 1 3
-*/
