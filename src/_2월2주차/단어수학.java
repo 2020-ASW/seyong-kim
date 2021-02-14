@@ -9,56 +9,60 @@ import java.util.Map;
 
 public class 단어수학 {
     static int N, answer;
-    static String[] words;
-    static ArrayList<String> alphabets;
+    static char[][] words;
+    static boolean[] visited;
+    static ArrayList<Character> alphabets;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        N = Integer.parseInt(br.readLine());
 
-        words = new String[N];
-        Map<String, Integer> map = new HashMap<>();
+        N = Integer.parseInt(br.readLine());
+        words = new char[N][];
+
+        Map<Character, Integer> map = new HashMap<>();
         for (int i = 0; i < N; i++) {
-            words[i] = br.readLine();
-            for (char ch : words[i].toCharArray())
-                map.put(ch + "", null);
+            char[] tmp = br.readLine().toCharArray();
+            words[i] = tmp;
+            for (char ch : tmp) map.put(ch, null);
         }
-        answer = 0;
         alphabets = new ArrayList<>(map.keySet());
-        dfs(9, map, 0);
+
+        visited = new boolean[10];
+        answer = 0;
+
+        dfs(map, 0);
 
         System.out.println(answer);
     }
 
-    private static void dfs(int idx, Map<String, Integer> map, int cnt) {
+    private static void dfs(Map<Character, Integer> map, int cnt) {
         if (cnt == map.size()) {
             int val = calculate(map);
             answer = Math.max(answer, val);
             return;
         }
 
-        for (int i = idx; i >= 9 - map.size(); i--) {
-            for (String ch : alphabets) {
-                if (map.get(ch) != null) continue;
+        for (int i = 0; i <= 9; i++) {
+            if (visited[i]) continue;
 
-                map.put(ch, i);
-                dfs(i - 1, map, cnt + 1);
-                map.put(ch, null);
-            }
+            visited[i] = true;
+            map.put(alphabets.get(cnt), i);
+
+            dfs(map, cnt + 1);
+
+            visited[i] = false;
         }
     }
 
-    private static int calculate(Map<String, Integer> map) {
+    private static int calculate(Map<Character, Integer> map) {
         int sum = 0;
-        String[] cloneArr = words.clone();
-        for (String word : cloneArr) {
-            int len = word.length();
-            int k = len - 1;
-            while (k >= 0) {
-                int num = map.get(word.substring(len - 1 - k, len - k));
-                sum += num * Math.pow(10, k);
-                k--;
+        for (int i = 0; i < N; i++) {
+            int tmp = 0;
+            for (char ch : words[i]) {
+                tmp *= 10;
+                tmp += map.get(ch);
             }
+            sum += tmp;
         }
         return sum;
     }
