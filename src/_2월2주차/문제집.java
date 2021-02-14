@@ -17,7 +17,7 @@ public class 문제집 {
         M = Integer.parseInt(st.nextToken());
 
         list = new ArrayList[N + 1];
-        for (int i = 1; i < list.length; i++) list[i] = new ArrayList();
+        for (int i = 1; i < list.length; i++) list[i] = new ArrayList<>();
 
         indegree = new int[N + 1];
         for (int i = 0; i < M; i++) {
@@ -33,7 +33,7 @@ public class 문제집 {
     }
 
     private static String topologicalSort(ArrayList<Integer>[] list, int[] indegree) {
-        PriorityQueue<Integer> queue = new PriorityQueue();
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
         StringBuilder result = new StringBuilder();
         for (int i = 1; i < indegree.length; i++) {
             if (indegree[i] == 0) {
