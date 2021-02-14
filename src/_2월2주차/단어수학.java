@@ -34,7 +34,6 @@ public class 단어수학 {
         if (cnt == map.size()) {
             int val = calculate(map);
             answer = Math.max(answer, val);
-            System.out.println(val);
             return;
         }
 
@@ -43,7 +42,7 @@ public class 단어수학 {
                 if (map.get(ch) != null) continue;
 
                 map.put(ch, i);
-                dfs(i + 1, map, cnt + 1);
+                dfs(i - 1, map, cnt + 1);
                 map.put(ch, null);
             }
         }
@@ -53,11 +52,13 @@ public class 단어수학 {
         int sum = 0;
         String[] cloneArr = words.clone();
         for (String word : cloneArr) {
-            String tmp = word;
-            for (char ch : word.toCharArray()) {
-                tmp = tmp.replaceAll(ch + "", map.get(ch + "").toString());
+            int len = word.length();
+            int k = len - 1;
+            while (k >= 0) {
+                int num = map.get(word.substring(len - 1 - k, len - k));
+                sum += num * Math.pow(10, k);
+                k--;
             }
-            sum += Integer.parseInt(tmp);
         }
         return sum;
     }
