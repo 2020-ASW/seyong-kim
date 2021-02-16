@@ -37,4 +37,34 @@ public class 평범한배낭 {
         }
         System.out.println(dp[N][K]);
     }
+
+    // 공간 복잡도 최적화 코드
+    /*
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int N = Integer.parseInt(st.nextToken());
+        int K = Integer.parseInt(st.nextToken());
+
+        int[] dp = new int[K + 1];
+        int[][] items = new int[N + 1][2];
+
+        for (int i = 1; i <= N; i++) {
+            st = new StringTokenizer(br.readLine());
+            int W = Integer.parseInt(st.nextToken());
+            int V = Integer.parseInt(st.nextToken());
+
+            items[i][0] = W;
+            items[i][1] = V;
+        }
+
+        for (int i = 1; i <= N; i++) {
+            for (int j = K; j >= 1; j--) {
+                if (items[i][0] <= j)
+                    dp[j] = Math.max(dp[j], dp[j - items[i][0]] + items[i][1]);
+            }
+        }
+        System.out.println(dp[K]);
+    }
+    */
 }
