@@ -3,7 +3,14 @@
 > ❌ : 못 푼 문제
 
 ### 2월 2주차
-- 
+- [평범한 배낭](src/_2월2주차/평범한배낭.java)
+- [문제집](src/_2월2주차/문제집.java)
+- [창용 마을 무리의 개수](src/_2월2주차/창용마을무리의개수.java)
+- [Kth Smallest Element In A Sorted Matrix](src/_2월2주차/KthSmallestElementInASortedMatrix.java)
+- [치즈](src/_2월2주차/치즈.java)
+- [단어 수학](src/_2월2주차/단어수학.java)
+- [Group Anagrams](src/_2월2주차/GroupAnagrams.java)
+
 
 ### 2월 1주차
 - [K진트리](src/_2월1주차/K진트리.java)
