@@ -53,27 +53,27 @@ public class 나무심기 {
 
     }
 
-    public static long getCNT(int start, int end, int idx, int left, int right) {
+    public static long getCNT(int start, int end, int node, int left, int right) {
         if (start > right || end < left)
             return 0;
 
         if (left <= start && end <= right)
-            return cntArr[idx];
+            return cntArr[node];
 
         int mid = (start + end) / 2;
 
-        return getCNT(start, mid, idx * 2, left, right) + getCNT(mid + 1, end, idx * 2 + 1, left, right);
+        return getCNT(start, mid, node * 2, left, right) + getCNT(mid + 1, end, node * 2 + 1, left, right);
     }
 
-    public static long getSum(int start, int end, int idx, int left, int right) {
+    public static long getSum(int start, int end, int node, int left, int right) {
         if (start > right || end < left)
             return 0;
 
         if (left <= start && end <= right)
-            return segmentTree[idx];
+            return segmentTree[node];
 
         int mid = (start + end) / 2;
 
-        return getSum(start, mid, idx * 2, left, right) + getSum(mid + 1, end, idx * 2 + 1, left, right);
+        return getSum(start, mid, node * 2, left, right) + getSum(mid + 1, end, node * 2 + 1, left, right);
     }
 }
