@@ -61,7 +61,6 @@ public class 도로네트워크 {
             int[] result = lca(u, v);
             sb.append(result[0]).append(" ").append(result[1]).append("\n");
         }
-
         System.out.println(sb.toString());
     }
 
@@ -90,8 +89,7 @@ public class 도로네트워크 {
         // b가 항상 더 깊은 노드로
         if (depth[a] > depth[b]) return lca(b, a);
 
-        int[] result = {Math.min(minDP[0][a], minDP[0][b]), Math.max(maxDP[0][a], maxDP[0][b])};
-        result[0] = result[0] == 0 ? 1000001 : result[0];
+        int[] result = {Integer.MAX_VALUE, Integer.MIN_VALUE};
 
         // 깊이를 맞춰 준다
         for (int i = MAX_D; i >= 0; i--) {
@@ -107,12 +105,14 @@ public class 도로네트워크 {
 
         for (int i = MAX_D; i >= 0; i--) {
             if (parent[i][a] != parent[i][b]) {
-                a = parent[i][a];
-                b = parent[i][b];
                 result[0] = Math.min(result[0], Math.min(minDP[i][a], minDP[i][b]));
                 result[1] = Math.max(result[1], Math.max(maxDP[i][a], maxDP[i][b]));
+                a = parent[i][a];
+                b = parent[i][b];
             }
         }
+        result[0] = Math.min(result[0], Math.min(minDP[0][a], minDP[0][b]));
+        result[1] = Math.max(result[1], Math.max(maxDP[0][a], maxDP[0][b]));
         return result;
     }
 
