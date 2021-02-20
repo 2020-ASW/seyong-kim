@@ -4,12 +4,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class 뉴스전하기 {
     static int N;
-    static int[] dp;
-    static ArrayList<Integer>[] tree;
+    static ArrayList<Info>[] tree;
+
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -29,28 +31,45 @@ public class 뉴스전하기 {
                 continue;
             }
 
-            tree[superior].add(employee);
+            tree[superior].add(new Info(employee, 0));
             employee++;
         }
 
-        dp = new int[N];
         System.out.println(dfs(0));
     }
 
     private static int dfs(int employee) {
-        if (tree[employee].size() == 0) return 1;
+        int max = 0, t = 0;
 
-        int children = 1;
-        for (int e : tree[employee]) {
-            children += dfs(e);
-        }
-        dp[employee] = children;
-
-        int res = 0;
-        for (int e : tree[employee]) {
-            res = Math.max(res, dp[e]);
+        for (Info info : tree[employee]) {
+            info.time = dfs(info.node);
         }
 
-        return res;
+        Collections.sort(tree[employee]);
+
+        for (Info next : tree[employee])
+            max = Math.max(max, next.time + (++t));
+
+        return max;
+    }
+
+    static class Info implements Comparable<Info> {
+        int node;
+        int time;
+
+        Info(int node, int time) {
+            this.node = node;
+            this.time = time;
+        }
+
+        @Override
+        public int compareTo(Info o) {
+            return Integer.compare(o.time, this.time);
+        }
     }
 }
+/*
+12
+-1 0 0 1 1 2 3 4 4 6 9 10
+*/
+
