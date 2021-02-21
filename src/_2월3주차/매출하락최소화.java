@@ -9,7 +9,6 @@ public class 매출하락최소화 {
 
     public static int solution(int[] sales, int[][] links) {
         employees = new Node[sales.length + 1];
-
         for (int i = 0; i < sales.length; i++) {
             employees[i + 1] = new Node(i + 1, sales[i]);
         }
@@ -22,20 +21,20 @@ public class 매출하락최소화 {
         }
 
         dp = new int[sales.length + 1][2];
-        dfs(new Node(1, 14));
+        dfs(employees[1]);
 
         return Math.min(dp[1][0], dp[1][1]);
     }
 
     private static void dfs(Node node) {
-        for (Node child : tree[node.no]) {
-            dfs(child);
-        }
-
         if (tree[node.no].size() == 0) {
             dp[node.no][0] = 0;
             dp[node.no][1] = node.cost;
             return;
+        }
+
+        for (Node child : tree[node.no]) {
+            dfs(child);
         }
 
         int sum = 0, minCost = Integer.MAX_VALUE;
@@ -49,10 +48,9 @@ public class 매출하락최소화 {
             minCost = Math.min(minCost, dp[child.no][1] - dp[child.no][0]);
         }
         dp[node.no][1] = node.cost + sum;
-        dp[node.no][0] = sum + minCost;
 
-        if (flag)
-            dp[node.no][0] = sum;
+        if (flag) dp[node.no][0] = sum;
+        else dp[node.no][0] = sum + minCost;
     }
 
     static class Node {
