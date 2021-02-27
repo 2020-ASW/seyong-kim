@@ -10,8 +10,8 @@ import java.util.StringTokenizer;
 public class 도로네트워크 {
     private static ArrayList<Node>[] tree;
     private static int[] depth;
-    private static final int MAX_N = 5;
-    private static final int MAX_D = 3;
+    private static final int MAX_N = 100000;
+    private static final int MAX_D = 17;
     private static int[][] parent;
     private static int[][] maxDP, minDP;
 
