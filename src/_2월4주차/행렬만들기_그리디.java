@@ -26,7 +26,7 @@ public class 행렬만들기_그리디 {
             colSum += col[i];
         }
 
-        if(rowSum != colSum){
+        if (rowSum != colSum) {
             System.out.println(-1);
             return;
         }
@@ -36,6 +36,7 @@ public class 행렬만들기_그리디 {
             for (int j = 1; j <= N; j++) {
                 if (row[i] == 0 || col[j] == 0) continue;
 
+                if ((i != N && j != N) && (row[i] - 1 == 0 && col[j] - 1 == 0)) continue;
                 map[i][j] = 1;
                 row[i]--;
                 col[j]--;
