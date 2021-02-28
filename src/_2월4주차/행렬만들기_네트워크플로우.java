@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
+// https://blog.naver.com/ndb796/221237111220
 public class 행렬만들기_네트워크플로우 {
     static short[][] capacity;
     static short[][] flowArr;
-    static ArrayList<Integer>[] graph;
     static int total;
 
     public static void main(String[] args) throws IOException {
@@ -16,11 +16,8 @@ public class 행렬만들기_네트워크플로우 {
 
         int N = Integer.parseInt(br.readLine());
 
-        graph = new ArrayList[N * N + 3];
-        for (int i = 0; i < graph.length; i++) graph[i] = new ArrayList<>();
-
-        capacity = new short[N * N + 3][N * N + 3];
-        flowArr = new short[N * N + 3][N * N + 3];
+        capacity = new short[N + N + 3][N + N + 3];
+        flowArr = new short[N + N + 3][N + N + 3];
 
         int S = 0;
         int E = 2 * N + 1;
@@ -30,16 +27,12 @@ public class 행렬만들기_네트워크플로우 {
         for (int i = 1; i <= N; i++) {
             capacity[S][i] = Short.parseShort(st.nextToken());
             rowSum += capacity[S][i];
-            graph[S].add(i);
-            graph[i].add(S);
         }
 
         st = new StringTokenizer(br.readLine());
         for (int i = N + 1; i <= 2 * N; i++) {
             capacity[i][E] = Short.parseShort(st.nextToken());
             colSum += capacity[i][E];
-            graph[i].add(E);
-            graph[E].add(i);
         }
 
         if (rowSum != colSum) {
@@ -49,8 +42,6 @@ public class 행렬만들기_네트워크플로우 {
 
         for (int i = 1; i <= N; i++) {
             for (int j = N + 1; j <= 2 * N; j++) {
-                graph[i].add(j);
-                graph[j].add(i);
                 capacity[i][j] = 1;
             }
         }
@@ -76,12 +67,13 @@ public class 행렬만들기_네트워크플로우 {
             int[] pre = new int[end + 1];
             Arrays.fill(pre, -1);
             Queue<Integer> queue = new LinkedList<>();
+            pre[start] = start;
             queue.offer(start);
 
             while (!queue.isEmpty() && pre[end] == -1) {
                 int now = queue.poll();
 
-                for (int next : graph[now]) {
+                for (int next = 0; next < end + 1; next++) {
                     if (capacity[now][next] > flowArr[now][next] && pre[next] == -1) {
                         queue.offer(next);
                         pre[next] = now;
