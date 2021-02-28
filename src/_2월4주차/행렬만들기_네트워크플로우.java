@@ -6,8 +6,8 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class 행렬만들기_네트워크플로우 {
-    static int[][] capacity;
-    static int[][] flowArr;
+    static short[][] capacity;
+    static short[][] flowArr;
     static ArrayList<Integer>[] graph;
     static int total;
 
@@ -19,8 +19,8 @@ public class 행렬만들기_네트워크플로우 {
         graph = new ArrayList[N * N + 3];
         for (int i = 0; i < graph.length; i++) graph[i] = new ArrayList<>();
 
-        capacity = new int[N * N + 3][N * N + 3];
-        flowArr = new int[N * N + 3][N * N + 3];
+        capacity = new short[N * N + 3][N * N + 3];
+        flowArr = new short[N * N + 3][N * N + 3];
 
         int S = 0;
         int E = 2 * N + 1;
@@ -28,7 +28,7 @@ public class 행렬만들기_네트워크플로우 {
 
         StringTokenizer st = new StringTokenizer(br.readLine());
         for (int i = 1; i <= N; i++) {
-            capacity[S][i] = Integer.parseInt(st.nextToken());
+            capacity[S][i] = Short.parseShort(st.nextToken());
             rowSum += capacity[S][i];
             graph[S].add(i);
             graph[i].add(S);
@@ -36,7 +36,7 @@ public class 행렬만들기_네트워크플로우 {
 
         st = new StringTokenizer(br.readLine());
         for (int i = N + 1; i <= 2 * N; i++) {
-            capacity[i][E] = Integer.parseInt(st.nextToken());
+            capacity[i][E] = Short.parseShort(st.nextToken());
             colSum += capacity[i][E];
             graph[i].add(E);
             graph[E].add(i);
@@ -78,7 +78,7 @@ public class 행렬만들기_네트워크플로우 {
             Queue<Integer> queue = new LinkedList<>();
             queue.offer(start);
 
-            while (!queue.isEmpty()) {
+            while (!queue.isEmpty() && pre[end] == -1) {
                 int now = queue.poll();
 
                 for (int next : graph[now]) {
@@ -88,7 +88,7 @@ public class 행렬만들기_네트워크플로우 {
                     }
                 }
             }
-            if (pre[end] == -1) return;
+            if (pre[end] == -1) break;
 
             int flow = 1;
             for (int i = end; i != start; i = pre[i]) {
