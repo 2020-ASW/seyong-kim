@@ -21,21 +21,21 @@ public class 세용액 {
 
         Arrays.sort(arr);
         boolean flag = false;
-        int[] result = new int[3];
-        int diff = 1000000000;
+        long[] result = new long[3];
+        long diff = 3000000000L;
         for (int x = 0; x < N - 2; x++) {
-            int w1 = arr[x];
+            long w1 = arr[x];
 
             int left = x + 1;
             int right = N - 1;
             while (left < right) {
-                int w2 = arr[left];
-                int w3 = arr[right];
+                long w2 = arr[left];
+                long w3 = arr[right];
 
-                int sum = w1 + w2 + w3;
+                long sum = w1 + w2 + w3;
                 if (diff > Math.abs(sum)) {
                     diff = Math.abs(sum);
-                    result = new int[]{w1, w2, w3};
+                    result = new long[]{w1, w2, w3};
                 }
 
                 if (sum == 0) {
