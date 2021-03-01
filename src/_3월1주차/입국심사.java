@@ -7,9 +7,10 @@ class 입국심사 {
         Arrays.sort(times);
 
         long max = times[times.length - 1];
-
         long answer = max * n;
         long left = 1, right = max * n;
+        // long right = n * times[times.length - 1];
+        // 이렇게 할 경우 int*int라 오버플로우
 
         while (left <= right) {
             long mid = (left + right) / 2;
