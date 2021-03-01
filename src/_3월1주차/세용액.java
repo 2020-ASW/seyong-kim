@@ -20,9 +20,11 @@ public class 세용액 {
         }
 
         Arrays.sort(arr);
+
         boolean flag = false;
         long[] result = new long[3];
         long diff = 3000000000L;
+
         for (int x = 0; x < N - 2; x++) {
             long w1 = arr[x];
 
@@ -50,7 +52,8 @@ public class 세용액 {
             if (flag) break;
         }
 
-        Arrays.sort(result);
-        System.out.println(Arrays.toString(result));
+        for (long n : result) {
+            System.out.print(n + " ");
+        }
     }
 }
